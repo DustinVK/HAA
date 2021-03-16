@@ -3,12 +3,13 @@ package main;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
-import frames.Background;
+
+import frames.BackgroundFrame;
 
 public class Main {
 
 	public static void main(String[] args) {
-		Background bg = new Background(screenSize());
+		BackgroundFrame bg = new BackgroundFrame(screenSize());
 		bg.setSize(screenSize().width,screenSize().height);
 		bg.setVisible(true);
 

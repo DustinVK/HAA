@@ -1,12 +1,10 @@
 package charts;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-import java.awt.Toolkit;
 import java.awt.font.TextAttribute;
 import java.util.Collections;
 
@@ -105,13 +103,13 @@ public class SliderPanel extends JPanel {
         //drawSliderShadow(graphics);
 
         drawRegions(graphics);
-        drawScale(graphics);
+        //drawScale(graphics);
 
   
         drawHashMarks(graphics);
         drawScaleLabels(graphics);
-        //drawHandles(graphics);
-        drawPins(graphics);
+        drawHandles(graphics);
+        //drawPins(graphics);
   
 	}
 
