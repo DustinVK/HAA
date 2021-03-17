@@ -2,7 +2,9 @@ package frames;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -12,10 +14,10 @@ public class OrderFrame extends InternalFrame {
 	JButton haaButton;
 	
 	public OrderFrame(ActionListener listener) {
-		super();
+		super(listener);
 		JButton haaButton = new JButton("HAA Summary");
 		haaButton.addActionListener(listener);
-		haaButton.setActionCommand("HAA Summary");
+		haaButton.setActionCommand("HAASummary");
 		JPanel divider = new JPanel(new BorderLayout());
 		divider.add(haaButton, BorderLayout.WEST);
 		haaButton.setPreferredSize(new Dimension(200, 50));
