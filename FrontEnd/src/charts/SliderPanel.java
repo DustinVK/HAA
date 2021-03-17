@@ -126,6 +126,7 @@ public class SliderPanel extends JPanel {
 		
 	}
 	
+	@SuppressWarnings("unused")
 	private void drawPins(Graphics2D graphics) {
     	graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
     	
@@ -145,19 +146,7 @@ public class SliderPanel extends JPanel {
 	            graphics.fillOval(handleLocation(handles[i])-6, yBuffer+height+6, 16, 16);
     		}
     	}
-//		graphics.setColor(shadow);
-//        graphics.fillRect(handleLocation(handles[1])+1, 6, 3, height+yBuffer+5);
-//		graphics.setColor(handleColor2);
-//        graphics.fillRect(handleLocation(handles[1]), 5, 3, height+yBuffer+5);
-//        graphics.fillOval(handleLocation(handles[1])-6, yBuffer+height+6, 16, 16);
-//       // graphics.fillOval(max, yBuffer, width, height);//
-//        
-//		graphics.setColor(shadow);
-//        graphics.fillRect(handleLocation(handles[0])+1, 6, 3, height+yBuffer+5);
-//		graphics.setColor(handleColor1);
-//        graphics.fillRect(handleLocation(handles[0]), 5, 3, height+yBuffer+5);
-//        graphics.fillOval(handleLocation(handles[0])-6, 0, 16, 16);
-//       // graphics.fillOval(max, yBuffer, width, height);//
+
 		
 	}
         
@@ -194,6 +183,7 @@ public class SliderPanel extends JPanel {
         graphics.fillRect(getSpace(5,5),yBuffer, divisionLength(5), height);
 	}
 
+	@SuppressWarnings("unused")
 	private void drawScale(Graphics graphics) {
 		graphics.setColor(grey);
         graphics.fillRect(xBuffer,centerScalePos()+yBuffer, width, scaleWeight());
@@ -201,6 +191,7 @@ public class SliderPanel extends JPanel {
       
 	}
 	
+	@SuppressWarnings("unused")
 	private void drawSliderShadow(Graphics graphics) {
 		graphics.setColor(Color.LIGHT_GRAY);
         graphics.fillRect(xBuffer,yBuffer+(height/2), width, height/2);

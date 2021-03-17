@@ -2,11 +2,9 @@ package frames;
 
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
 
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -14,38 +12,37 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
-import javax.swing.JComponent;
 import javax.swing.JFrame;
-import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
 
-public class BackgroundFrame extends JFrame implements ActionListener{
+public class BackgroundFrame extends JFrame {
 
 	private static final long serialVersionUID = 8173081588655862415L;
 
 	static BufferedImage backgrounds[];
 	static int currentBackground;
-	JButton orderButton;
-	JButton tabButton;
+	public JButton orderButton;
+	public JButton tabButton;
 	
-	OrderFrame orderFrame;
-	HAASummaryFrame haaFrame;
+	
+	public OrderFrame orderFrame;
+	public HAASummaryFrame haaFrame;
+	
 
-	public BackgroundFrame(Dimension screen) {
+	public BackgroundFrame(Dimension screen, ActionListener listener) {
 		backgrounds = getBackgrounds();
 		currentBackground = 0;
 
 		JPanel bgPanel = bgPanel(screen);
 		bgPanel.setLayout(null);
-		setOrderButton();
-		setTabButton();
+		setOrderButton(listener);
+		setTabButton(listener);
 	    bgPanel.add(orderButton);
 	    bgPanel.add(tabButton);
-	    orderFrame = new OrderFrame(this);
-	    haaFrame = new HAASummaryFrame(this);
+
+	    this.orderFrame = new OrderFrame(listener);
+	    this.haaFrame = new HAASummaryFrame(listener);
 	    
-	    //orderFrame.setBorder(null);
 		this.add(orderFrame);
 		this.add(haaFrame);
 		this.add(bgPanel);
@@ -65,7 +62,6 @@ public class BackgroundFrame extends JFrame implements ActionListener{
 
 			public void paintComponent(Graphics g) {
 				super.paintComponent(g);
-				//g.drawImage(bg1, 0, 0, null);
 				g.drawImage(backgrounds[currentBackground], EXIT_ON_CLOSE, DISPOSE_ON_CLOSE, screen.width, screen.height, null);
 				
 			}
@@ -73,7 +69,7 @@ public class BackgroundFrame extends JFrame implements ActionListener{
 		return bgPanel;
 	}
 	
-	private void toggleBackground() {
+	public void toggleBackground() {
 		if(currentBackground == 0) {
 			currentBackground = 1;
 		}
@@ -83,19 +79,20 @@ public class BackgroundFrame extends JFrame implements ActionListener{
 		this.repaint();
 	}
 
-	private void setTabButton() {
+	private void setTabButton(ActionListener listener) {
 		tabButton = new JButton("Switch Tab");
 		tabButton.setBounds(150, 45, 90, 45);
 		tabButton.setBackground(Color.red);
-		tabButton.addActionListener(this);
+		tabButton.addActionListener(listener);
 		tabButton.setVisible(true);
 	}
 	
-	private void setOrderButton() {
+	private void setOrderButton(ActionListener listener) {
 		orderButton = new JButton("Order Button");
 		orderButton.setBounds(1470, 263, 440, 110);
 		orderButton.setBackground(Color.green);
-		orderButton.addActionListener(this);
+		orderButton.addActionListener(listener);
+		orderButton.setActionCommand("Order");
 		orderButton.setVisible(true);
 	}
 	
@@ -113,29 +110,22 @@ public class BackgroundFrame extends JFrame implements ActionListener{
 	
 	
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == orderButton){
-			orderFrame.setVisible(true);
-			orderButton.setVisible(false);
-		}
-		else if(e.getSource() == tabButton) {
-			toggleBackground();
-		}
-		else if(e.getActionCommand().equals("HAASummary")) {
-			System.out.print("sup");
-			orderFrame.setVisible(false);
-			haaFrame.setVisible(true);
-		}
-		else if(e.getActionCommand().equals("Close")) {
-			System.out.print("sup");
-			haaFrame.setVisible(false);
-			orderFrame.setVisible(false);
-			orderButton.setVisible(true);
-		}
-	
-		
+	public JButton getOrderButton() {
+		return orderButton;
 	}
+
+	public void setOrderButton(JButton orderButton) {
+		this.orderButton = orderButton;
+	}
+
+	public JButton getTabButton() {
+		return tabButton;
+	}
+
+	public void setTabButton(JButton tabButton) {
+		this.tabButton = tabButton;
+	}
+
 	
 
 

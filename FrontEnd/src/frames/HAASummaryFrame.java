@@ -3,7 +3,6 @@ package frames;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
@@ -18,7 +17,7 @@ public class HAASummaryFrame extends InternalFrame{
 	JPanel panel;
 	
 	public HAASummaryFrame(ActionListener listener) {
-		super(listener,"HAA Summary Close");
+		super(listener);
 		JPanel divider = new JPanel(new GridLayout(0,2));
 		float handles[] = {216.2f,180.5f};
 		

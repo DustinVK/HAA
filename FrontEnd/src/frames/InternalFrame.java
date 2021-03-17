@@ -20,38 +20,29 @@ public abstract class InternalFrame extends JInternalFrame {
 	final static Color blue = new Color(0,114,177);
 	ActionListener listener;
 	JButton closeButton;
-	String actionCommand;
+	
+	final static int posX = 180;
+	final static int posY = 200;
+	final static int width = 1500;
+	final static int height = 500;
+	final static int barHeight = 30;
+	final static int topButtonWidth = 80;
+	final static int topButtonHeight = barHeight;
 	
 	public InternalFrame(ActionListener listener) {
-		actionCommand = "test blank command";
 		this.listener = listener;
 		this.setVisible(false);
-		this.setBounds(180, 200, 1500, 500);
+		this.setBounds(posX, posY, width, height);
 		setUI(this.getUI());
 		this.setBorder(BorderFactory.createLineBorder(blue, 2));
 		this.setLayout(new BorderLayout());
-		this.add(topBar(actionCommand), BorderLayout.NORTH);
-		this.add(topBar(actionCommand), BorderLayout.SOUTH);
+		this.add(topBar(), BorderLayout.NORTH);
+		this.add(bar(), BorderLayout.SOUTH);
 		this.setBackground(Color.WHITE);
+		//this.setResizable(true);
 	
-			
 	}
 	
-	public InternalFrame(ActionListener listener, String ac) {
-		
-		this.listener = listener;
-		this.setVisible(false);
-		this.setBounds(180, 200, 1500, 500);
-		setUI(this.getUI());
-		this.setBorder(BorderFactory.createLineBorder(blue, 2));
-		this.setLayout(new BorderLayout());
-		this.add(topBar(ac), BorderLayout.NORTH);
-		this.add(topBar(ac), BorderLayout.SOUTH);
-		this.setBackground(Color.WHITE);
-		
-		this.actionCommand = ac;
-			
-	}
 	
 	
 	@Override
@@ -61,8 +52,24 @@ public abstract class InternalFrame extends JInternalFrame {
         if (frameUI != null) frameUI.setNorthPane(null); // lets get rid of it
     }
 	
-	// bar for top and bottom
-	private JPanel topBar(String ac) {
+	private JPanel topBar() {
+		JPanel bar = bar();
+		bar.setPreferredSize(new Dimension(width,barHeight));
+		bar.setLayout(null);
+		closeButton = new JButton("Close");
+		closeButton.setBounds(width - topButtonWidth, -1, topButtonWidth, topButtonHeight);
+		closeButton.setBackground(Color.LIGHT_GRAY);
+		closeButton.addActionListener(listener);
+		closeButton.setActionCommand("Close");
+		bar.add(closeButton);
+		
+		return bar;
+	}
+	
+
+
+	// base bar for top and bottom
+	private JPanel bar() {
 		JPanel bar = new JPanel() {
 			private static final long serialVersionUID = 1L;
 
@@ -75,15 +82,8 @@ public abstract class InternalFrame extends JInternalFrame {
 			      g2.fillRect(0, 0, this.getWidth(), this.getHeight());
 			   }
 		};
-		bar.setPreferredSize(new Dimension(1500,30));
+		bar.setPreferredSize(new Dimension(width,barHeight));
 		bar.setLayout(null);
-		closeButton = new JButton("Close");
-		closeButton.setBounds(1417, -1, 80, 30);
-		closeButton.setBackground(Color.LIGHT_GRAY);
-		closeButton.addActionListener(listener);
-		closeButton.setActionCommand("Close");
-		bar.add(closeButton);
-		
 		return bar;
 	}
 }

@@ -1,0 +1,56 @@
+package main;
+
+
+
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+
+import frames.BackgroundFrame;
+
+public class Application implements ActionListener{
+	
+	BackgroundFrame bgFrame;
+
+	public Application() {
+		bgFrame = new BackgroundFrame(screenSize(),this);
+		bgFrame.setSize(screenSize().width,screenSize().height);
+		bgFrame.setVisible(true);
+	
+		    
+	}
+	
+	// background frame and image size is dynamic based on screen resolution
+	private static Dimension screenSize() {
+		return Toolkit.getDefaultToolkit().getScreenSize();
+	}
+	   
+	
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == bgFrame.orderButton){
+			bgFrame.orderFrame.setVisible(true);
+			bgFrame.orderButton.setVisible(false);
+		}
+		else if(e.getSource() == bgFrame.tabButton) {
+			bgFrame.toggleBackground();
+		}
+		else if(e.getActionCommand().equals("HAASummary")) {
+			bgFrame.orderFrame.setVisible(false);
+			bgFrame.haaFrame.setVisible(true);
+		}
+		else if(e.getActionCommand().equals("Close")) {
+			bgFrame.haaFrame.setVisible(false);
+			bgFrame.orderFrame.setVisible(false);
+			bgFrame.orderButton.setVisible(true);
+		}
+	
+		
+	}
+	
+
+
+}
