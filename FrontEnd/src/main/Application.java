@@ -24,8 +24,13 @@ public class Application implements ActionListener{
 	
 	// background frame and image size is dynamic based on screen resolution
 	private static Dimension screenSize() {
-		return Toolkit.getDefaultToolkit().getScreenSize();
+		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+		if (screen.width < 1920) {
+			screen.height = (int) (screen.width / 1.778);
+		}
+		return screen;
 	}
+	
 	   
 	
 

@@ -12,8 +12,8 @@ public class OrderFrame extends InternalFrame {
 	private static final long serialVersionUID = -2104859513530411013L;
 	JButton haaButton;
 	
-	public OrderFrame(ActionListener listener) {
-		super(listener);
+	public OrderFrame(ActionListener listener, Dimension screen) {
+		super(listener, screen);
 		JButton haaButton = new JButton("HAA Summary");
 		haaButton.addActionListener(listener);
 		haaButton.setActionCommand("HAASummary");

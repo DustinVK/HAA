@@ -2,6 +2,7 @@ package frames;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 
@@ -16,8 +17,8 @@ public class HAASummaryFrame extends InternalFrame{
 	Slider slider;
 	JPanel panel;
 	
-	public HAASummaryFrame(ActionListener listener) {
-		super(listener);
+	public HAASummaryFrame(ActionListener listener, Dimension screen) {
+		super(listener, screen);
 		JPanel divider = new JPanel(new GridLayout(0,2));
 		float handles[] = {216.2f,180.5f};
 		

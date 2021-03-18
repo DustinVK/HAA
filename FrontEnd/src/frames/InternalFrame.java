@@ -21,18 +21,21 @@ public abstract class InternalFrame extends JInternalFrame {
 	ActionListener listener;
 	JButton closeButton;
 	
-	final static int posX = 180;
-	final static int posY = 200;
-	final static int width = 1500;
-	final static int height = 500;
-	final static int barHeight = 30;
-	final static int topButtonWidth = 80;
-	final static int topButtonHeight = barHeight;
+	static Dimension screen;
 	
-	public InternalFrame(ActionListener listener) {
+//	final static int posX = 180;
+//	final static int posY = 200;
+//	final static int width = 1500;
+//	final static int height = 500;
+//	final static int barHeight = 30;
+//	final static int topButtonWidth = 80;
+//	final static int topButtonHeight = barHeight;
+	
+	public InternalFrame(ActionListener listener, Dimension screen) {
+		this.screen = screen;
 		this.listener = listener;
 		this.setVisible(false);
-		this.setBounds(posX, posY, width, height);
+		this.setBounds(posX(), posY(), width(), height());
 		setUI(this.getUI());
 		this.setBorder(BorderFactory.createLineBorder(blue, 2));
 		this.setLayout(new BorderLayout());
@@ -43,7 +46,29 @@ public abstract class InternalFrame extends JInternalFrame {
 	
 	}
 	
+	private int posX() {
+		return (int) (screen.width / 10.6667);
+	}
 	
+	private int posY() {
+		return (int) (screen.height / 4.5);
+	}
+	
+	private int width() {
+		return (int) (screen.width / 1.28);
+	}
+	
+	private int height() {
+		return (int) (screen.height / 2);
+	}
+	
+	private int barHeight() {
+		return (int) screen.height / 36;
+	}
+	
+	private int topButtonWidth() {
+		return (int) screen.width / 16;
+	}
 	
 	@Override
     public void setUI(InternalFrameUI ui) {
@@ -54,10 +79,10 @@ public abstract class InternalFrame extends JInternalFrame {
 	
 	private JPanel topBar() {
 		JPanel bar = bar();
-		bar.setPreferredSize(new Dimension(width,barHeight));
+		bar.setPreferredSize(new Dimension(width(),barHeight()));
 		bar.setLayout(null);
 		closeButton = new JButton("Close");
-		closeButton.setBounds(width - topButtonWidth, -1, topButtonWidth, topButtonHeight);
+		closeButton.setBounds(width() - topButtonWidth(), -1, topButtonWidth(), barHeight());
 		closeButton.setBackground(Color.LIGHT_GRAY);
 		closeButton.addActionListener(listener);
 		closeButton.setActionCommand("Close");
@@ -82,7 +107,7 @@ public abstract class InternalFrame extends JInternalFrame {
 			      g2.fillRect(0, 0, this.getWidth(), this.getHeight());
 			   }
 		};
-		bar.setPreferredSize(new Dimension(width,barHeight));
+		bar.setPreferredSize(new Dimension(width(),barHeight()));
 		bar.setLayout(null);
 		return bar;
 	}

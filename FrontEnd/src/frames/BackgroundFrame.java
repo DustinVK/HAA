@@ -35,13 +35,13 @@ public class BackgroundFrame extends JFrame {
 
 		JPanel bgPanel = bgPanel(screen);
 		bgPanel.setLayout(null);
-		setOrderButton(listener);
+		setOrderButton(listener, screen);
 		setTabButton(listener);
 	    bgPanel.add(orderButton);
 	    bgPanel.add(tabButton);
 
-	    this.orderFrame = new OrderFrame(listener);
-	    this.haaFrame = new HAASummaryFrame(listener);
+	    this.orderFrame = new OrderFrame(listener, screen);
+	    this.haaFrame = new HAASummaryFrame(listener, screen);
 	    
 		this.add(orderFrame);
 		this.add(haaFrame);
@@ -87,13 +87,29 @@ public class BackgroundFrame extends JFrame {
 		tabButton.setVisible(true);
 	}
 	
-	private void setOrderButton(ActionListener listener) {
+	private void setOrderButton(ActionListener listener, Dimension screen) {
 		orderButton = new JButton("Order Button");
-		orderButton.setBounds(1470, 263, 440, 110);
+		orderButton.setBounds((int) orderButtonPosX(screen), (int)orderButtonPosY(screen), (int)orderButtonWidth(screen), (int)orderButtonHeight(screen));
 		orderButton.setBackground(Color.green);
 		orderButton.addActionListener(listener);
 		orderButton.setActionCommand("Order");
 		orderButton.setVisible(true);
+	}
+
+	private double orderButtonHeight(Dimension screen) {
+		return screen.height/9.2;
+	}
+
+	private double orderButtonWidth(Dimension screen) {
+		return screen.width / 4.28;
+	}
+
+	private double orderButtonPosY(Dimension screen) {
+		return screen.height * .24;
+	}
+
+	private double orderButtonPosX(Dimension screen) {
+		return screen.width*0.765;
 	}
 	
 	private BufferedImage[] getBackgrounds() {
@@ -114,17 +130,12 @@ public class BackgroundFrame extends JFrame {
 		return orderButton;
 	}
 
-	public void setOrderButton(JButton orderButton) {
-		this.orderButton = orderButton;
-	}
 
 	public JButton getTabButton() {
 		return tabButton;
 	}
 
-	public void setTabButton(JButton tabButton) {
-		this.tabButton = tabButton;
-	}
+
 
 	
 
