@@ -21,6 +21,10 @@ import javax.swing.JPanel;
  * It has 2 backgrounds to toggle between
  * It contains an OrderFrame and HAASummaryFrame 
  * 
+ * #TODO: 
+ * 		Resize tab button to line up with the tab in the background image
+ * 		Make another button for the other tab (to toggle back and forth)
+ * 
  */
 
 public class BackgroundFrame extends JFrame {
@@ -92,6 +96,10 @@ public class BackgroundFrame extends JFrame {
 		tabButton.setBackground(Color.red);
 		tabButton.addActionListener(listener);
 		tabButton.setVisible(true);
+		// To make invisible
+//		tabButton.setOpaque(false);
+//		tabButton.setContentAreaFilled(false);
+//		tabButton.setBorderPainted(false);
 	}
 	
 	private void setOrderButton(ActionListener listener, Dimension screen) {
