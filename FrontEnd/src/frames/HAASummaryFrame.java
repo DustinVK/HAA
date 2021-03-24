@@ -10,6 +10,13 @@ import javax.swing.JPanel;
 
 import charts.Slider;
 
+/*
+ *  An InternalFrame to display HAA data to the end user
+ *  
+ *  #TODO: Needs to be fleshed out more as it's currently just a placeholder 
+ *  
+ */
+
 public class HAASummaryFrame extends InternalFrame{
 
 	private static final long serialVersionUID = 6457256788978318517L;	

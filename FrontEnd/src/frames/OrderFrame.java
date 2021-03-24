@@ -7,6 +7,12 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+/*
+ * An InternalFrame for the order info and confirmation window 
+ * 
+ *  #TODO: Needs to be fleshed out more as it's currently just a placeholder 
+ */
+
 public class OrderFrame extends InternalFrame {
 	
 	private static final long serialVersionUID = -2104859513530411013L;

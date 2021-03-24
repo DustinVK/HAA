@@ -14,6 +14,18 @@ import javax.swing.JPanel;
 import javax.swing.plaf.InternalFrameUI;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
+/*
+ * InternalFrame is a JInternalFrame 
+ * Overrides the setUI method to hide the default look so we can create a custom frame to match existing software 
+ * 
+ * * #TODO 
+ * 		* Add a bar with accept and close buttons
+ *	  	* Suggested improvements:
+ *	  			Change the bar methods to favor composition over inheritance
+ *				Make frame resizable and movable 
+ *			
+ */
+
 public abstract class InternalFrame extends JInternalFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -21,15 +33,7 @@ public abstract class InternalFrame extends JInternalFrame {
 	ActionListener listener;
 	JButton closeButton;
 	
-	static Dimension screen;
-	
-//	final static int posX = 180;
-//	final static int posY = 200;
-//	final static int width = 1500;
-//	final static int height = 500;
-//	final static int barHeight = 30;
-//	final static int topButtonWidth = 80;
-//	final static int topButtonHeight = barHeight;
+	Dimension screen;
 	
 	public InternalFrame(ActionListener listener, Dimension screen) {
 		this.screen = screen;
@@ -42,7 +46,7 @@ public abstract class InternalFrame extends JInternalFrame {
 		this.add(topBar(), BorderLayout.NORTH);
 		this.add(bar(), BorderLayout.SOUTH);
 		this.setBackground(Color.WHITE);
-		//this.setResizable(true);
+		//this.setResizable(true); 
 	
 	}
 	
@@ -77,6 +81,10 @@ public abstract class InternalFrame extends JInternalFrame {
         if (frameUI != null) frameUI.setNorthPane(null); // lets get rid of it
     }
 	
+	
+	/*
+	 
+	 */
 	private JPanel topBar() {
 		JPanel bar = bar();
 		bar.setPreferredSize(new Dimension(width(),barHeight()));

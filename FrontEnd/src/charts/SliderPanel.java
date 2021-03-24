@@ -10,8 +10,12 @@ import java.util.Collections;
 
 import javax.swing.JPanel;
 
-/**
- * 
+/* 
+ *  SliderPanel takes values and makes a visual chart out of them 
+ *  
+ *  
+ *   #TODO:
+ *   	I would like to make this more modular / favoring composition over inheritance if possible 
  */
 
 public class SliderPanel extends JPanel {

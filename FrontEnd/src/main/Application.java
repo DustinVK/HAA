@@ -1,7 +1,5 @@
 package main;
 
-
-
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -9,6 +7,12 @@ import java.awt.event.ActionListener;
 
 
 import frames.BackgroundFrame;
+
+
+/*
+ * The main App of the game. Is passed as ActionListener to  
+ * Contains a BackGroundFrame which contains the visual frames and panels of the UI.  
+ */
 
 public class Application implements ActionListener{
 	

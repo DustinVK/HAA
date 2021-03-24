@@ -7,6 +7,13 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/*
+ * Slider is the slider chart
+ * 
+ * #TODO:
+ * 		
+ */
+
 public class Slider extends JPanel {
 	
 	/**

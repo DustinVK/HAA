@@ -15,6 +15,14 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+/*
+ * BackGroundFrame acts as the foundation for the rest of the UI 
+ * 
+ * It has 2 backgrounds to toggle between
+ * It contains an OrderFrame and HAASummaryFrame 
+ * 
+ */
+
 public class BackgroundFrame extends JFrame {
 
 	private static final long serialVersionUID = 8173081588655862415L;
@@ -34,7 +42,6 @@ public class BackgroundFrame extends JFrame {
 		currentBackground = 0;
 
 		JPanel bgPanel = bgPanel(screen);
-		bgPanel.setLayout(null);
 		setOrderButton(listener, screen);
 		setTabButton(listener);
 	    bgPanel.add(orderButton);
@@ -59,13 +66,13 @@ public class BackgroundFrame extends JFrame {
 	private JPanel bgPanel(Dimension screen) {
 		JPanel bgPanel = new JPanel() {
 			private static final long serialVersionUID = 1L;
-
+			// Draw the background image 
 			public void paintComponent(Graphics g) {
 				super.paintComponent(g);
 				g.drawImage(backgrounds[currentBackground], EXIT_ON_CLOSE, DISPOSE_ON_CLOSE, screen.width, screen.height, null);
-				
 			}
 		};
+		bgPanel.setLayout(null);
 		return bgPanel;
 	}
 	
