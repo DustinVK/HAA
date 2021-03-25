@@ -10,7 +10,7 @@ import frames.BackgroundFrame;
 
 
 /*
- * The main App of the game. Is passed as ActionListener to  
+ * The main App of the game. Is passed as ActionListener to the rest of the GUI components
  * Contains a BackGroundFrame which contains the visual frames and panels of the UI.  
  */
 

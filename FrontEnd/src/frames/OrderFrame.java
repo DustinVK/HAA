@@ -3,6 +3,7 @@ package frames;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -30,5 +31,9 @@ public class OrderFrame extends InternalFrame {
 		
 		this.add(divider, BorderLayout.CENTER);
 	}
+
+
+
+	
 
 }
