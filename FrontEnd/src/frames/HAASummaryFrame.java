@@ -38,6 +38,8 @@ public class HAASummaryFrame extends InternalFrame{
 		this.add(divider, BorderLayout.CENTER);
 		this.setBackground(Color.WHITE);
 		//this.actionCommand = "HAASummary Close";
+		
+		this.topBar.addConfirmButton();
 	}
 
 

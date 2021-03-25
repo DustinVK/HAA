@@ -45,6 +45,15 @@ public class InternalFrameBar extends JPanel {
 		this.add(closeButton);
 	}
 	
+	public void addConfirmButton() {
+		JButton closeButton = new JButton("Confirm");
+		closeButton.setBounds(width() - buttonWidth() * 2, -1, buttonWidth(), barHeight());
+		closeButton.setBackground(Color.LIGHT_GRAY);
+		closeButton.addActionListener(actionListener);
+		closeButton.setActionCommand("Confirm");
+		this.add(closeButton);
+	}
+	
 	
 	@Override
 	public void paintComponent(Graphics g) {
